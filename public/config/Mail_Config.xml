@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<mail_config>
+
+  <!-- delayed_job -->
+  <bg_timeout>180</bg_timeout>
+  <clock_send_mail>300</clock_send_mail>
+  
+
+  <!--cmsam: setup mailbox server-->
+  <mail_server_address>smtp.tma.com.vn</mail_server_address>
+  <mail_server_port>25</mail_server_port>
+  <mail_server_domain>tma.com.vn</mail_server_domain>
+  <mail_server_enable_tls>0</mail_server_enable_tls>
+  <mail_server_username>cmsam</mail_server_username>
+  <mail_server_password>Xuongrong@2</mail_server_password>
+  <mail_from>no-reply@wallem.com</mail_from>
+  <mail_from_debug>cmsam@tma.com.vn</mail_from_debug>
+  <mail_to>quoteqa@wallem.com</mail_to>
+  <mail_to_debug>cmsam@tma.com.vn</mail_to_debug>
+  <mail_cc>quoteqa@wallem.com</mail_cc>
+  <mail_cc_debug>cmsam@tma.com.vn</mail_cc_debug>
+  <mail_subject>TPS-QA Application</mail_subject>
+</mail_config>

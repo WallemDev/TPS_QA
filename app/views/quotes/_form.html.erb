@@ -1,0 +1,50 @@
+<script type="text/javascript">
+    $(function () {
+        var from_date = $('.from_date').datetimepicker({
+            todayHighlight: true,
+            todayBtn: true,
+            format: "mm/dd/yyyy",
+            minView: 2,
+            autoclose: true
+        }).on('changeDate', function (ev) {
+
+                });
+        var to_date = $('.to_date').datetimepicker({
+            todayHighlight: true,
+            todayBtn: true,
+            format: "mm/dd/yyyy",
+            minView: 2,
+            autoclose: true
+        }).on('changeDate', function (ev) {
+
+                });
+
+        $('#filter_option').selectpicker().on('click', function(e){
+
+        });
+    });
+    $(document).ready(function () {
+        var window_height = $(window).height(),
+                content_height = window_height - 100;
+//        $('.span12').height(content_height);
+//        $('.span12').overflowX('hidden');
+
+    });
+</script>
+<div class='table table-bordered table-striped table-details'>
+  <%= render 'search_bar' %>
+  <!--<%#= render 'search_quotes' %>-->
+  <%= render 'search_quotes_ver2' %>
+</div>
+<br/>
+
+<div id="partial_quotedetails" class='table table-bordered table-details'>
+  <!--<%#= render 'quote_details/quotes_details', :quote_details => @quote_details %>-->
+  <%= render 'quote_details/quotes_details_ver2', :quote_details => @quote_details %>
+</div>
+
+
+
+
+
+

@@ -1,0 +1,190 @@
+// Place all the styles related to the quotes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+//@import 'bootstrap';
+//@import 'bootstrap-datetimepicker';
+
+table a {
+  text-decoration: underline;
+  &:hover {
+    background: #00a3d2;
+    color: #ffffff;
+  }
+}
+
+.center {
+  text-align: center;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+/* Table */
+
+.box-container {
+  background: #ffffcc;
+  color: #003366;
+  min-width: 745px;
+  overflow: auto;
+  > .title {
+    background: #006699;
+    color: #ffffff;
+    overflow: auto;
+    text-transform: uppercase;
+    padding: 5px 0;
+    padding-left: 10px;
+    font-size: 18px;
+    text-shadow: 1px 1px #000;
+    .right {
+      font-size: 14px;
+      color: #cccccc;
+      line-height: 150%;
+      padding-right: 10px;
+    }
+  }
+  .box-content {
+    margin: 5px;
+    padding-bottom: 25px;
+  }
+  > form {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.row {
+  margin: 0.7em 0;
+  clear: both;
+  overflow: auto;
+  .ui-datepicker-trigger, .icon {
+    vertical-align: middle;
+    margin-top: -5px;
+    margin-left: 5px;
+  }
+  .controls-group {
+    display: inline-block;
+  }
+}
+
+.table-details {
+  background: #99ccff;
+  color: #003366;
+  padding: 10px;
+  overflow: auto;
+  .top, .bottom {
+    padding-bottom: 5px;
+    overflow: auto;
+  }
+  .bottom {
+    padding-bottom: 0;
+    padding-top: 5px;
+  }
+  .title {
+    font-size: 14px;
+    font-weight: bold;
+    color: #000;
+  }
+  .no-results {
+    padding: 10px 5px;
+    font-style: italic;
+  }
+  table {
+    clear: both;
+    width: 100%;
+    //margin: 0 auto;
+    background: #99ccff;
+    th {
+      font-weight: bold;
+      background: #ccffff;
+      vertical-align: middle;
+      line-height: 15px;
+    }
+    td {
+      background: #fff;
+      //height of row
+      line-height: 15px;
+    }
+    tr {
+      background: gray;
+      &.row-link {
+        &:hover {
+          cursor: pointer;
+          td {
+            background: #cccccc;
+          }
+        }
+        &.selected {
+          td {
+            background: #cccccc;
+          }
+        }
+      }
+    }
+  }
+  &.green {
+    background: #99cc99 !important;
+    table {
+      background: #99cc99 !important;
+      th {
+        background: #ccffcc !important;
+      }
+    }
+  }
+}
+
+.margin-bottom10 {
+  margin-bottom: 10px;
+}
+
+.pagination {
+  text-align: center;
+  margin: 10px 0px;
+  font-style: normal;
+  font-size: 16px;
+}
+
+.table tbody tr.green > td {
+  background-color: #cdff82;
+  color: red;
+}
+
+.table tbody tr.yellow > td {
+  background-color: #ffff91;
+  color: #000000;
+}
+
+.table tbody tr.white > td {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.table tbody tr.blue > td {
+  background-color: #91e3ff !important;
+  color: #000000;
+}
+
+.table tbody tr.orange > td {
+  background-color: #ffcd71 !important;
+  color: #000000;
+}
+
+.table tbody tr.highlight > td {
+  background-color: greenyellow;
+}
+
+.textbox-calendar {
+  width: 100px;
+}
+
+input#btnOK {
+  margin: 10px 0px;
+}
+
+input#btnCancel {
+  margin: 10px 0px;
+}

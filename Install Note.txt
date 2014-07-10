@@ -1,0 +1,24 @@
+
+
+sudo apt-get install unixodbc-dev
+
+sudo apt-get install freetds-dev
+
+
+
+SELECT TOP 1000 A.[intID] ,A.[strIMONo] ,A.[strVslcode] ,A.[strRMSTPID] ,A.[strQuotesNo]
+      ,A.[intQteVerNo],A.[lngRFQNo],A.[strRQNo],A.[strRFQNo],A.[intRFQVerNo]
+      ,A.[dteCreated],A.[dteUpdated],A.[strSupRemark],A.[bolOrigMaker],A.[bolOtherSupplier]
+      ,A.[strCurCode],A.[strOrigCountryCode],A.[sboldiscount],A.[strPayTerm],A.[strDaysReady]
+      ,A.[strGrossWt],A.[bolAllQuoted],A.[strSupRefNo],A.[strDiscByPerc],A.[strDiscByCurr]
+      ,A.[strDiscDesc],A.[strSupContact1],A.[strSupContact2],A.[intDelivCharge],A.[dteQuoteValid]
+      ,A.[bolWebSupplier],A.[strQuoteStatus],A.[strBuyRMSTPID],A.[bolBuyerRaised]
+      ,A.[strCountryCode],A.[strCountryCodeEx], B.strVslName , C.strCompName, D.strEqptTitle
+  FROM [dbMPE].[dbo].[tblWSQuoteHdr] As A left join tblVesselInfo as B on
+	A.strBuyRMSTPID = B.strRMSTPID and A.strIMONo = B.strIMONo and A.strVslCode = B.strVslCode
+	left join [dbMPEMultiparty].[dbo].[tblSuppliers] as C on
+	A.strBuyRMSTPID = C.strBuyRMSTPID and A.strRMSTPID = C.strRMSTPID
+	left join tblRQHeader as D on 
+	A.strBuyRMSTPID = D.strBuyRMSTPID and A.strIMONo = D.strIMONo and A.strVslCode = D.strVslCode
+	and A.strRQNo = D.strRQNo
+ORDER BY A.dteCreated DESC

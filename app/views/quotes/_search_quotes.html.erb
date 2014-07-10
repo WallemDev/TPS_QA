@@ -1,0 +1,56 @@
+<div class="main" style="overflow: auto; max-height: 400px" id="tbl_quotes">
+  <table class="">
+    <% if @quotes.empty? %>
+        <tr>
+          <th style="text-align: center">No result for quote </th>
+        </tr>
+    <% else %>
+    <tr>
+      <th>OK?</th>
+      <th>Quote No.</th>
+      <th>Version</th>
+      <th>Date Updated</th>
+      <th>Date Submitted</th>
+    </tr>
+    <% i=0
+       @quotes.each do |quote|
+       i=i+1
+      ok_value = QuotesHelper.get_value_ok(quote.strQuotesNo,quote.intQteVerNo.to_s)
+    %>
+        <tr id="tr<%= i  %>" onclick='show_details("<%= quote.strQuotesNo %>", "<%= quote.intQteVerNo %>", $(this));'>
+          <% if ok_value==1 %>
+              <td>OK</td>
+          <% elsif ok_value==0 %>
+              <td>NOT OK</td>
+          <% elsif ok_value==-1 %>
+              <td>NOT DONE</td>
+          <% end %>
+          <td><a href="#"><%= quote.intID %></a></td>
+          <td><%= quote.intQteVerNo %></td>
+          <td><%= quote.dteCreated %></td>
+          <td><%= quote.dteUpdated %></td>
+        </tr>
+    <% end %>
+    <% end %>
+  </table>
+  <%= will_paginate @quotes %>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.pagination a').click(function () {
+//            alert($(this).attr('href'));
+            loadAjaxData($(this).attr('href'), 'tbl_quotes');
+            return false;
+        });
+    });
+    $(function () {
+        $('#from_date').datetimepicker({
+            language: 'en',
+            pick12HourFormat: true
+        });
+        $('#to_date').datetimepicker({
+            language: 'en',
+            pick12HourFormat: true
+        });
+    });
+</script>

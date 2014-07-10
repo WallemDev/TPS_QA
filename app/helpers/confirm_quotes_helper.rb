@@ -1,0 +1,2 @@
+module ConfirmQuotesHelper
+end

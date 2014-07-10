@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+<p>
+  This is a automated email from Wallem for this item "" from <strong>QUOTEID :"<%= @quote_no %>".</strong> <br/>
+  This item has been marked as "disqualify" based on response of vessels and quality assurance crew.<br/>
+  Thank you for your cooperation.<br/>
+</p>
+
+<p>
+  Regards, <br/>
+  Wallem Application HelpDesk<br/>
+</p>
+</body>
+</html>

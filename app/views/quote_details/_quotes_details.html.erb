@@ -1,0 +1,97 @@
+<div class="top">
+  <div class="title left">
+    <strong>QUOTE DETAILS</strong>
+    <br/>
+    <small>Quote ID: <span style="font-weight: normal"><%= @intID %></span></small>
+    <br/>
+    <small>Remark: <span style="font-weight: normal;font-size: 12"><%= @strSupRemark %></span></small>
+  </div>
+</div>
+<div class="main" style="overflow: auto; max-height: 300px">
+  <table id="tbl_quotes_details">
+    <thead>
+    <tr>
+      <th>Item ID</th>
+      <th>Description</th>
+      <th>Quote</th>
+      <th>Reqn Qty.</th>
+      <th>Remark</th>
+      <th>Status</th>
+      <th> <input id="cbCheckOrUncheck" type="checkbox" value="Check All" onclick="CheckORUncheck();" > Select/Deselect All </th>
+    </tr>
+    </thead>
+    <tbody>
+    <% if @quote_details.nil? %>
+
+    <% else %>
+        <% @quote_details.each do |quote_detail| %>
+            <% if (quote_detail[:intMarkedValue].nil?)
+                 if ((quote_detail.strPrice).to_f < 0.02) %>
+                    <% color = 'orange' %>
+                <% else %>
+                    <% if quote_detail.strVariance != '' %>
+                        <% color = 'orange' %>
+                    <% else %>
+                        <% color = 'white' %>
+                    <% end %>
+                <% end %>
+            <% else
+                 if (quote_detail[:intMarkedValue]==1)
+            %>
+                    <% color = 'blue' %>
+                <% elsif (quote_detail[:intMarkedValue]==0) %>
+                    <% color = 'green' %>
+                <% end %>
+            <% end %>
+            <tr class="<%= color %>">
+              <td><%= quote_detail.strItemCode %></td>
+              <td><%= quote_detail.strItemDesc %></td>
+              <td><%= quote_detail.strPrice %></td>
+              <td><%= quote_detail.strQty %></td>
+              <td><%= quote_detail.strVariance %></td>
+              <% if quote_detail[:intMarkedValue] == 1 %>
+                  <td>OK</td>
+              <% elsif quote_detail[:intMarkedValue]==0 %>
+                  <td>Not OK</td>
+              <% else %>
+                  <td>--</td>
+              <% end %>
+
+              <td>
+                <% if (quote_detail[:intMarkedValue].nil?) %>
+                    <input class="cb_details" value="123" type="checkbox">
+                <% else %>
+                    --
+                <% end %>
+              </td>
+              <!--Hidden field to get data & save to database -->
+              <input type="hidden" class="QteVerNo" value="<%= quote_detail[:QteVerNo] %>">
+              <input type="hidden" class="QuotesNo" value="<%= quote_detail.strQuotesNo %>">
+              <input type="hidden" class="RQLineNo" value="<%= quote_detail[:RQLineNo] %>">
+            </tr>
+        <% end %>
+    <% end %>
+    </tbody>
+
+  </table>
+
+</div>
+<div>
+  <div class="controls pull-right">
+    <%= #button_tag 'OK',
+        #:type => 'button',
+        #:id => 'btnOK',
+        #:class => 'btn btn-primary'
+    %>
+    <input type="button" value="OK" id="btnOK" class='btn btn-primary' onclick="save_data($(this).attr('id'));">
+
+    <%= #button_tag 'Not OK',
+        #:type => 'button',
+        #:id => 'btnCancel',
+        #:class => 'btn btn-primary'
+    %>
+    <input type="button" value="Not OK" id="btnCancel" class='btn btn-primary' onclick="save_data(0);">
+    <!--<input type="hidden" id="tr_id" value="">-->
+
+  </div>
+</div>

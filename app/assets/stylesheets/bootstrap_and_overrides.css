@@ -1,0 +1,106 @@
+/*
+  =require twitter-bootstrap-static/bootstrap
+
+  Use Font Awesome icons (default)
+  To use Glyphicons sprites instead of Font Awesome, replace with "require twitter-bootstrap-static/sprites"
+  =require twitter-bootstrap-static/fontawesome
+  */
+.table {
+    font-style: normal;
+}
+
+.table-details tr td {
+    font-style: normal;
+}
+
+.table-details tr th {
+    font-style: normal;
+}
+
+.label {
+    font-style: normal;
+}
+
+body {
+    margin: 0;
+    /*padding-top: 0px;*/
+    /*height: 100%;*/
+    font-size: 11px;
+    font-style: normal;
+}
+
+.form-horizontal {
+
+}
+
+.footer {
+    background-color: #f5f5f5;
+    border-top: 1px solid #e5e5e5;
+    margin-top: 20px;
+    padding: 10px 0;
+    text-align: center;
+    bottom: 0px;
+    position: fixed;
+    width: 100%;
+    height: 5%;
+    font-style: normal;
+}
+
+.brand-right {
+    color: #777777;
+    display: block;
+    float: right;
+    font-size: 14px;
+    font-weight: 200;
+    margin-left: -20px;
+    padding: 10px 20px;
+    text-shadow: 0 1px 0 #ffffff;
+}
+
+.span12 {
+    padding-right: 20px;
+    padding-bottom: 50px;
+    padding-top: 50px;
+    /*overflow: auto;*/
+    /*min-height: 400px;*/
+    /*max-height: 50%;*/
+    /*bottom: 40px;*/
+    /*height: 100%;*/
+}
+
+.navbar-inner {
+    top: 0;
+    right: 0;
+    left: 0;
+    position: fixed;
+    z-index: 9999;
+}
+
+.row {
+    display: inline-block;
+    clear: both;
+}
+
+.btn {
+    font-size: 12px;
+}
+
+.label {
+    font-size: 12px;
+}
+
+.px12 {
+    font-size: 12px;
+}
+
+input#search_quote {
+    font-size: 12px;
+}
+
+select#filter_option {
+    font-size: 12px;
+}
+
+.filter-option {
+    font-size: 12px;
+}

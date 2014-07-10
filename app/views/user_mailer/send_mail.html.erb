@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <LINK href="quotes.css.scss" rel="stylesheet" type="text/css">
+  <style type="text/css">
+
+      body {
+          font-size: 12px;
+          font-family: tahoma, helvetica;
+      }
+
+      #tbl_quotes_details {
+          font-size: 12px;
+          font-family: tahoma, helvetica;
+      }
+
+      #tbl_quotes_details tbody tr.green > td {
+          background-color: #cdff82;
+          color: red;
+      }
+
+      #tbl_quotes_details tbody tr.yellow > td {
+          background-color: #ffff91;
+          color: #000000;
+      }
+
+      #tbl_quotes_details tbody tr.white > td {
+          background-color: #ffffff;
+          color: #000000;
+      }
+
+      #tbl_quotes_details tbody tr.blue > td {
+          background-color: #91e3ff !important;
+          color: #000000;
+      }
+
+      #tbl_quotes_details tbody tr.orange > td {
+          background-color: #ffcd71 !important;
+          color: #000000;
+      }
+  </style>
+</head>
+<body>
+<p>
+  The following Quote has been identified as either fully or partially unquoted. Please see details below.
+</p>
+<br/>
+<br/>
+
+<p>
+  Vessel Name: <%= @strVslName %>
+  <br/>
+  Supplier Name:<%= @strCompName %>
+  <br/>
+  Equipment Title:<%= @strEqptTitle %>
+  <br/>
+  Requisition No: <%= @rq_no %>
+  <br/>
+  Supplier Quotation Reference: <%= @quote_ref_no %>
+  <br/>
+  Supplier General Remark: <%= @sup_remark %>
+</p>
+<br/>
+<br/>
+
+<div id="partial_quotedetails" class="table table-bordered table-details">
+
+  <div class="top">
+    <div class="title left">
+      <strong>QUOTE DETAILS</strong>
+    </div>
+  </div>
+  <div class="main" style="overflow: auto; max-height: 300px">
+    <table id="tbl_quotes_details" class="">
+      <thead>
+      <tr>
+        <th>Item ID</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Reqn Qty.</th>
+        <th>Remark</th>
+        <th>Status</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% if @quote_details.nil? %>
+
+      <% else %>
+          <% @quote_details.each do |quote_detail| %>
+              <% if (quote_detail[:intMarkedValue].nil?)
+                   if ((quote_detail.strPrice).to_f < 0.02) %>
+                      <% color = 'orange' %>
+                  <% else %>
+                      <% if quote_detail.strVariance != '' %>
+                          <% color = 'orange' %>
+                      <% else %>
+                          <% color = 'white' %>
+                      <% end %>
+                  <% end %>
+              <% else
+                   if (quote_detail[:intMarkedValue]== 1) %>
+                      <% color = 'blue' %>
+                  <% elsif (quote_detail[:intMarkedValue]== 0) %>
+                      <% color = 'green' %>
+                  <% end %>
+              <% end %>
+              <tr class="<%= color %>">
+                <td><%= quote_detail.strItemCode %></td>
+                <td><%= quote_detail.strItemDesc %></td>
+                <td><%= quote_detail.strPrice %></td>
+                <td><%= quote_detail.strQty %></td>
+                <td><%= quote_detail.strVariance %></td>
+                <% if quote_detail[:intMarkedValue] == 1 %>
+                    <td>OK</td>
+                <% elsif quote_detail[:intMarkedValue]== 0 %>
+                    <td>Not OK</td>
+                <% else %>
+                    <td>--</td>
+                <% end %>
+              </tr>
+          <% end %>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<br/>
+<br/>
+
+<p>
+  This is an automated email. Please do not reply.
+</p>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script type="text/javascript">
+      $(document).ready(function () {
+          $('#search_quote').keypress(function (event) {
+              var keycode = (event.keyCode ? event.keyCode : event.which);
+              if (keycode == '13') {
+                  var from_date = $('#from_date').find('input').val();
+                  var to_date = $('#to_date').find('input').val();
+                  var filter_by = $('#filter_option :selected').text();
+                  var strSearch = $('#search_quote').val();
+                  var filter = '1';
+                  if (strSearch.length > 100) {
+                      alert('Search string should not exceed 100 characters.');
+                      return false;
+                  }
+                  var load = new ajaxLoader('body', {classOveride: 'blue-loader', bgColor: '#000', opacity: '0.7'});
+                  $.ajax(
+                          {
+                              url: 'quotes/search_quotes',
+                              type: 'GET',
+                              data: {'str_search': strSearch, 'filter': filter, 'filter_by': filter_by, 'from_date': from_date, 'to_date': to_date},
+                              success: function (data) {
+                                  if (load) load.remove();
+                                  //alert(data);
+                                  $('#tbl_quotes').html(data);
+
+                              },
+                              error: function (data) {
+
+                              }
+                          }
+                  );
+                  //cmsam clear tbl Quotes details
+                  $.ajax({
+                      url: '/quotes/reload_quote_details',
+                      type: 'GET',
+                      success: function (data) {
+                          $('#partial_quotedetails').html(data);
+                      }
+                  });
+              }
+          });
+      });
+  </script>
+</head>
+<body>
+<%= render 'form' %>
+<!--<div class="controls pull-right">-->
+<%#= #button_tag 'OK',
+#      #:type => 'button',
+#      #:id => 'btnOK',
+#      #:class => 'btn btn-primary'
+  <!--%>
+<!--<input type="button" value="OK" id="btnOK" class='btn btn-primary' onclick="save_data($(this).attr('id'));">-->
+
+<%#= #button_tag 'Not OK',
+#      #:type => 'button',
+#      #:id => 'btnCancel',
+#      #:class => 'btn btn-primary'
+  <!--%>
+<!--<input type="button" value="Not OK" id="btnCancel" class='btn btn-primary' onclick="save_data(0);">-->
+<input type="hidden" id="tr_id" value="">
+
+<!--</div>-->
+</body>
+</html>
